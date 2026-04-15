@@ -74,7 +74,7 @@ void accept(int A[10][10],int N[10][10],int M[10][10],int W[1][10],int *n,int *m
     printf("\n Enter total no. of resources : ");
     scanf("%d",m);
     for(i=0;i<*n;i++){
-        printf("\n Process %d\n",i+1);
+        printf("\n Process %d\n",i);
         for(j=0;j<*m;j++){
             printf(" Allocation for resource %d : ",j+1);
             scanf("%d",&A[i][j]);
@@ -129,7 +129,7 @@ int main(){
         if(ch==1){
             printf("\n Enter process no. : ");
             scanf("%d",&pid);
-            res_request(A,N,W,pid-1,m);
+            res_request(A,N,W,pid,m);
             ret=banker(A,N,W,n,m);
             if(ret==0)
                 exit(0);
