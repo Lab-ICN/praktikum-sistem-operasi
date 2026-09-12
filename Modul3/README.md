@@ -15,19 +15,9 @@ dengan NIM masing-masing sebelum pengumpulan.
 | `singlethread_NIM.c` | Thread, langkah l-n | Menjalankan simulasi transaksi rekening secara sekuensial. |
 | `threadtiga_NIM.c` | Thread, langkah o-p | Menjalankan simulasi yang sama dengan beberapa thread untuk mempelajari race condition dan mutex. |
 
-Berkas lama `threadsatu.c`, `threaddua.c`, dan `threadtiga.c` dipertahankan
-agar riwayat repository tidak hilang. Untuk praktikum terbaru, gunakan daftar
-berkas `_NIM.c` di atas.
-
 ## Kompilasi
 
-Semua program dapat dikompilasi sekaligus:
-
-```bash
-make
-```
-
-Atau kompilasi satu per satu:
+Kompilasi program yang ingin digunakan melalui terminal:
 
 ```bash
 gcc Loop_NIM.c -o Loop_NIM
@@ -110,13 +100,3 @@ Mode dengan mutex untuk melindungi data bersama:
 `-a` menentukan jumlah rekening, `-i` jumlah transaksi per thread, `-t`
 besar simulasi waktu pemrosesan, dan `-n` jumlah thread. Mode bawaan adalah
 `--unsafe` agar masalah sinkronisasi dapat diamati terlebih dahulu.
-
-## Pemeriksaan otomatis
-
-```bash
-make test
-```
-
-Pemeriksaan memastikan keenam berkas tersedia, dapat dikompilasi dengan
-peringatan ketat, serta contoh `fork()`, single-thread, dan multithread aman
-menghasilkan perilaku yang diharapkan.
