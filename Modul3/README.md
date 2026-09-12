@@ -13,7 +13,7 @@ dengan NIM masing-masing sebelum pengumpulan.
 | `threadsatu_NIM.c` | Thread, langkah a-d | Menjalankan dua thread pencetak pesan secara bersamaan. |
 | `threaddua_NIM.c` | Thread, langkah e-k | Membuat dua worker thread dan mengenali keduanya melalui thread ID. |
 | `singlethread_NIM.c` | Thread, langkah l-n | Menjalankan simulasi transaksi rekening secara sekuensial. |
-| `threadtiga_NIM.c` | Thread, langkah o-p | Menjalankan simulasi yang sama dengan beberapa thread untuk mempelajari race condition dan mutex. |
+| `threadtiga_NIM.c` | Thread, langkah o-p | Modifikasi contoh sekuensial menjadi dua thread untuk mempelajari race condition. |
 
 ## Kompilasi
 
@@ -85,18 +85,13 @@ konsisten.
 
 ### 6. Simulasi multithread
 
-Mode tanpa mutex untuk mengamati kemungkinan race condition:
+Kode akhir `threadtiga_NIM.c` tidak diberikan di modul. Berkas ini merupakan
+modifikasi langsung dari `singlethread_NIM.c` dengan dua `pthread`, sesuai
+instruksi langkah o-p. Jalankan untuk mengamati kemungkinan race condition:
 
 ```bash
-./threadtiga_NIM -a 64 -i 100000 -t 50 -n 8 --unsafe
+./threadtiga_NIM -a 64 -i 100000 -t 50
 ```
 
-Mode dengan mutex untuk melindungi data bersama:
-
-```bash
-./threadtiga_NIM -a 64 -i 100000 -t 50 -n 8 --safe
-```
-
-`-a` menentukan jumlah rekening, `-i` jumlah transaksi per thread, `-t`
-besar simulasi waktu pemrosesan, dan `-n` jumlah thread. Mode bawaan adalah
-`--unsafe` agar masalah sinkronisasi dapat diamati terlebih dahulu.
+`-a` menentukan jumlah rekening, `-i` jumlah transaksi per thread, dan `-t`
+menentukan besar simulasi waktu pemrosesan.

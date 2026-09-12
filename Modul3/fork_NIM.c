@@ -1,27 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
 #include <unistd.h>
+
+/* This program forks and prints whether the process is
+ - the child (the return value of fork() is 0), or
+ - the parent (the return value of fork() is not zero)
+ *
+ When this was run 100 times on the computer the author is
+ on, only twice did the parent process execute before the
+ child process executed.
+ *
+ Note, if you juxtapose two strings, the compiler automatically
+ concatenates the two, e.g., "Hello " "world!"
+ */
 
 int main(void)
 {
-    pid_t pid = fork();
-
-    if (pid < 0) {
-        perror("fork gagal");
-        return EXIT_FAILURE;
-    }
-
-    if (pid == 0) {
+    int pid = fork();
+    if (pid == 0)
+    {
         printf("This is being printed from the child process\n");
-        printf("Child PID: %ld, Parent PID: %ld\n",
-               (long)getpid(), (long)getppid());
-        return EXIT_SUCCESS;
     }
-
-    printf("This is being printed in the parent process.\n"
-           "The process identifier (PID) of the child is %ld\n",
-           (long)pid);
-
-    return EXIT_SUCCESS;
+    else
+    {
+        printf("This is being printed in the parent process:\n"
+               " - the process identifier (pid) of the child is %d\n", pid);
+    }
+    return 0;
 }
