@@ -2,7 +2,7 @@
 // Original author: @ahmadnafi30
 // Modified for lab practicum purposes
 
-include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int main() {
